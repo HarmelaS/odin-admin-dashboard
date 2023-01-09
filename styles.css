@@ -1,10 +1,36 @@
 :root {
     --gray: #EEEEEE;
     --teal: #00ADB5;
+    --teal-hover: #00676C;
     --dark-blue: #222831;
   }
+
+ 
+
+  /*  BASIC STYLES */
+    .nomargin {
+      margin: 0px;
+    }
+
+    .nopadding {
+      padding: 0px;
+    }
+
+    hr {
+      border-color: lightgray;
+      opacity: 0.3;
+    }
+
   
   /* TYPOGRAPHY */
+
+    .whitetext {
+      color: #fff;
+    }
+
+    p {
+      color: #767676;
+    }
 
     h1.logo-text {
         font-family: 'Outfit';
@@ -14,6 +40,56 @@
         line-height: 40px;
         color: #fff;
     }
+
+    h1.project-title,
+    h1.community-title,
+    h1.trending-title {
+      font-family: 'Outfit';
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--dark-blue);
+    }
+
+    h2.project-header {
+      font-family: 'Outfit';
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: var(--dark-blue);
+    }
+
+    h2.header-h2 {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+    }
+
+    h3 {
+      color: var(--dark-blue);
+    }
+    
+    h3.community-header {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      color: var(--dark-blue);
+      margin: 12px 0px;
+  }
+
+    p.profile-text {
+      font-family: 'Outfit';
+      color: #fff;
+      font-size: 1.3em;
+    }
+
+    p.community-desc {
+      color: #767676;
+      font-size: 12px;
+    }
+
+    p.nomargin.project-trending-name {
+      color: #767676;
+      font-size: 14px;
+      font-family: 'Outfit';
+  }
 
  /* LIST */
 
@@ -31,15 +107,36 @@
     font-weight: 400;
     font-size: 24px;
     line-height: 30px;
+    transition: filter .15s linear;
   }
 
   li a:hover {
-    color: var(--dark-blue);
+    filter: invert(90%);
+
   }
 
   li img {
     width: 30px;
   }
+
+  /* BUTTONS */
+  a.header-button {
+    display: block;
+    color: white;
+    background-color: var(--teal);
+    text-decoration: none;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    transition: background-color .2s linear;
+}
+
+a.header-button:hover {
+  background: var(--teal-hover);
+}
   
   body {
     margin: 0px;
@@ -80,16 +177,31 @@
   #header {
     grid-area: 1/2/2/7;
     background-color: var(--dark-blue);
+    padding: 0px 40px;
   }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 30px;
+  }  
 
   .search-box {
     display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .profile-acc {
+    display: flex;
+    gap: 30px;
     justify-content: center;
     align-items: center;
   }
 
   input[type="text"] {
-    width: 700px;
+    width: 80%;
     height: 44px;
     margin: 30px;
     border-radius: 30px;
@@ -97,10 +209,27 @@
     border: 0;
     padding-left: 15px;
     color: white;
+    font-size: 16px;
+    transition: all .2s linear;
+  }
+
+  input[type="text"]:focus {
+    background: #4b5158;
   }
 
   input[type="text"]:focus {outline:none!important;}
 
+  .header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 25px;
+  }
+
+  .header-bottom-buttons {
+    display: flex;
+    gap: 30px;
+  }
   
   #main {
     display: grid;
@@ -109,6 +238,12 @@
     gap: 20px;
     background-color: var(--gray);
     margin: 20px;
+  }
+
+  .header-bottom-profile-message {
+    display: flex;
+    align-items: center;
+    gap: 20px;
   }
   
   .project-title {
@@ -137,16 +272,45 @@
     border-left: 10px solid #00ADB5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-evenly;
   }
   
-  .community-card {
+  .community-card,
+  .trending-card {
     background-color: white;
     padding: 1rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
+
+  .trending-card {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .community-post {
+    padding: 10px;
+  }
   
-  
+  .project-info {
+    padding: 16px 0px;
+  }
+
+  .project-share {
+    display: flex;
+    gap: 20px;
+  }
+
+  .trending-post {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   /*---------------------
   Mobile Dashboard View 
   ----------------------*/
@@ -188,6 +352,25 @@
 
     .logo.row {
         padding: 0px;
+    }
+
+    #header {
+      padding: 0px 10px;
+    }
+
+    .header-top {
+      flex-direction: column-reverse;
+      padding-bottom: 0px;
+    }
+
+    .header-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap:30px;
+    }
+
+    .profile-acc {
+      display: none;
     }
   }
   
